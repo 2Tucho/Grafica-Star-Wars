@@ -14,15 +14,16 @@ fetch("https://swapi.dev/api/films/")
                                     for (let i = 0; i < element.results.length; i++) {
                                         yearsArray.push((element.results[i].release_date).slice(0, 4)) // El .slice solo recoge el año de la fecha entera
                                     };
-
                                     years.push(yearsArray)
+
                                     new Chartist.Line('.grafica1', {
                                         labels: films, // Aqui me pilla el array
                                         series: years // Aquí me pilla el array de arrays
                                     }, {
                                         fullWidth: true,
                                         chartPadding: {
-                                            right: 40
+                                            right: 90,
+                                            bottom: 10
                                         }
                                     });
                                 })
