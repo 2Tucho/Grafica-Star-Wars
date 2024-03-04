@@ -1,5 +1,6 @@
 //fetch("https://swapi.dev/api/films/").then(res => res.json()).then(elem => console.log(elem.results[0].title)) --> "A New Hope"
 
+// Gráfica 1
 fetch("https://swapi.dev/api/films/")
                                 .then(res => res.json())
                                 .then(element => {
@@ -7,30 +8,29 @@ fetch("https://swapi.dev/api/films/")
                                     for (let i = 0; i < element.results.length; i++) {
                                         films.push(element.results[i].title) 
                                     };
+
                                     let years = [];
+                                    let yearsArray = []; // Es necesario crear este segundo array porque el eje "Y" solo trabaja con arrays de arrays
                                     for (let i = 0; i < element.results.length; i++) {
-                                        years.push((element.results[i].release_date).slice(0, 4)) // El .slice solo recoge el año de la fecha entera
-                                    } 
+                                        yearsArray.push((element.results[i].release_date).slice(0, 4)) // El .slice solo recoge el año de la fecha entera
+                                    }; 
+
+                                    years.push(yearsArray)
+                                    new Chartist.Line('.grafica1', {
+                                        labels: films, // Aqui me pilla el array
+                                        series: years // Aquí me pilla el array de arrays
+                                    }, {
+                                        fullWidth: true,
+                                        chartPadding: {
+                                            right: 40
+                                        }
+                                    });
                                 })
 
 
-// Grafica 1
-new Chartist.Line('.grafica1', {
-    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-    series: [
-        [12, 9, 7, 8, 5],
-        [2, 1, 3.5, 7, 3],
-        [1, 3, 4, 5, 6]
-    ]
-}, {
-    fullWidth: true,
-    chartPadding: {
-        right: 40
-    }
-});
 
 
-// Grafica 2
+// Gráfica 2
 var data = {
     labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8', 'W9', 'W10'],
     series: [
