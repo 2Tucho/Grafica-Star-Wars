@@ -18,7 +18,7 @@ API ENDPOINT --> https://swapi.dev/api/people/
 Para pintar todo esto usaremos Chartist Link a la docu: Chartist
 
 
-Pasos a seguir:
+3. Pasos a seguir:
     - [X] Creo un par de <div>, uno para cada parte del ejercicio
     - [X] Entro en la api de Star Wars para localizar la información que precisa cada tarea
     - [X] Me meto en Chartist y busco una gráfica de líneas que me mole
@@ -38,6 +38,6 @@ Pasos a seguir:
     - [X] Acabar tarea 2
 
 
-Bonus:
+4. Bonus:
     - [] No aparecen todos los personajes en https://swapi.dev/api/people/, vienen luego en páginas como https://swapi.dev/api/people/?page=2 y así hasta la 9. Debería hacer un fetch de todas y guardar todos los personajes en un mismo array para el eje "X"
     - [] Hay personajes que no aparecen en ninguna peli, habría que meter un if(element2.results[i].films = Null/Undefined) {no push al array definitivo con los personajes}
