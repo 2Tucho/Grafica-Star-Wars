@@ -27,35 +27,70 @@ fetch("https://swapi.dev/api/films/")
                                     });
                                 })
 
-
 fetch("https://swapi.dev/api/people/")
                                 .then(res => res.json())
                                 .then(element2 => {
-                                    let actors = [];
+                                    let characters = [];
                                     for (let i = 0; i < element2.results.length; i++) {
-                                        actors.push(element2.results[i].name)
+                                        characters.push(element2.results[i].name)
+                                    };
+
+                                    let numFilms = [];
+				                    let numFilmsArray = [];
+                                    for (let i = 0; i < element2.results.length; i++) {
+                                        let counter = (element2.results[i].films).length
+                                        numFilmsArray.push(counter)
+                                    };
+                                    numFilms.push(numFilmsArray)
+
+                                    var data = {
+                                        labels: characters,
+                                        series: numFilms
+                                      };
+                                      
+                                      var options = {
+                                        seriesBarDistance: 10
+                                      };
+                                      
+                                      var responsiveOptions = [
+                                        ['screen and (max-width: 640px)', {
+                                          seriesBarDistance: 5,
+                                          axisX: {
+                                            labelInterpolationFnc: function (value) {
+                                              return value[0];
+                                            }
+                                          }
+                                        }]
+                                      ];
+                                      
+                                      new Chartist.Bar('.grafica2', data, options, responsiveOptions);
+                                })
+                                
+// Obtengo array con los personajes
+/* fetch("https://swapi.dev/api/people/")
+                                .then(res => res.json())
+                                .then(element2 => {
+                                    let characters = [];
+                                    for (let i = 0; i < element2.results.length; i++) {
+                                        characters.push(element2.results[i].name)
                                     };
                                 })
 
-// Gráfica 2
-var data = {
-    labels: ['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8', 'W9', 'W10'],
-    series: [
-        [1, 2, 4, 8, 6, -2, -1, -4, -6, -2]
-    ]
-};
+// Obtengo array con array de nº pelis en las que ha salido cada uno
+fetch("https://swapi.dev/api/people/")
+                                .then(res => res.json())
+                                .then(element2 => {
+                                    let numFilms = [];
+				                    let numFilmsArray = [];
+                                    for (let i = 0; i < element2.results.length; i++) {
+                                        let counter = (element2.results[i].films).length
+                                        numFilmsArray.push(counter)
+                                    };
+                                    numFilms.push(numFilmsArray)
+                                }) */
 
-var options = {
-    high: 10,
-    low: -10,
-    axisX: {
-        labelInterpolationFnc: function (value, index) {
-            return index % 2 === 0 ? value : null;
-        }
-    }
-};
 
-new Chartist.Bar('.grafica2', data, options);
+
 
 // He conseguido un array con los años de publicacion de cada peli
 /* fetch("https://swapi.dev/api/films/")
@@ -67,3 +102,48 @@ new Chartist.Bar('.grafica2', data, options);
                                     } 
                                     return years
                                 }) */
+
+// He obtenido el fecth de todas las páginas que contienen personajes de Star Wars
+/* Promise.all([
+    fetch("https://swapi.dev/api/people/").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=2").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=3").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=4").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=5").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=6").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=7").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=8").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=9").then((res) => res.json())
+    ]).then(element2 => console.log(element2)) */
+
+//He conseguido acceder al nombre de un personaje
+/* Promise.all([
+    fetch("https://swapi.dev/api/people/").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=2").then((res) => res.json()),
+  fetch("https://swapi.dev/api/people/?page=3").then((res) => res.json()),
+  fetch("https://swapi.dev/api/people/?page=4").then((res) => res.json()),
+  fetch("https://swapi.dev/api/people/?page=5").then((res) => res.json()),
+  fetch("https://swapi.dev/api/people/?page=6").then((res) => res.json()),
+  fetch("https://swapi.dev/api/people/?page=7").then((res) => res.json()),
+  fetch("https://swapi.dev/api/people/?page=8").then((res) => res.json()),
+  fetch("https://swapi.dev/api/people/?page=9").then((res) => res.json())
+  ]).then(element2 => console.log(element2[0].results[0].name)) // --> Luke Skywalker */
+
+  /* Promise.all([
+    fetch("https://swapi.dev/api/people/").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=2").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=3").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=4").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=5").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=6").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=7").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=8").then((res) => res.json()),
+    fetch("https://swapi.dev/api/people/?page=9").then((res) => res.json())
+    ])
+        .then(element2 => {
+            let characters = []
+            for (let i = 0; i < element2.length; i++) {
+                characters.push(element2[i].results[i].name)
+            }
+            return characters
+        }) */

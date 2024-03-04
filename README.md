@@ -33,5 +33,11 @@ Pasos a seguir:
     - [X] Hago fetch de las rutas que toquen de la api
     - [X] Copio la gráfica desde su cdn, el código en mi scrip.js y lo anexo al <div> que le toque
     - [X] Acabada tarea 1
+    - [X] Guardar todos los personajes en una variable para la segunda gráfica (eje X)
+    - [X] Guardar el nº de pelis en las que ha participado cada pj en una variable para la segunda gráfica (eje Y)
+    - [X] Acabar tarea 2
+
+
+Bonus:
     - [] No aparecen todos los personajes en https://swapi.dev/api/people/, vienen luego en páginas como https://swapi.dev/api/people/?page=2 y así hasta la 9. Debería hacer un fetch de todas y guardar todos los personajes en un mismo array para el eje "X"
-    - [] Hay personajes que no aparecen en ninguna peli, habría que meter un if(element2.results[i].films = Null/U)
+    - [] Hay personajes que no aparecen en ninguna peli, habría que meter un if(element2.results[i].films = Null/Undefined) {no push al array definitivo con los personajes}
