@@ -6,14 +6,14 @@ fetch("https://swapi.dev/api/films/")
                                 .then(element => {
                                     let films = []; // --> ["A New Hope", "The Empire Strikes Back", "Return of the Jedi", "The Phantom Menace", "Attack of the Clones", "Revenge of the Sith"]
                                     for (let i = 0; i < element.results.length; i++) {
-                                        films.push(element.results[i].title) 
+                                        films.push(element.results[i].title)
                                     };
 
                                     let years = [];
                                     let yearsArray = []; // Es necesario crear este segundo array porque el eje "Y" solo trabaja con arrays de arrays
                                     for (let i = 0; i < element.results.length; i++) {
                                         yearsArray.push((element.results[i].release_date).slice(0, 4)) // El .slice solo recoge el año de la fecha entera
-                                    }; 
+                                    };
 
                                     years.push(yearsArray)
                                     new Chartist.Line('.grafica1', {
@@ -28,7 +28,14 @@ fetch("https://swapi.dev/api/films/")
                                 })
 
 
-
+fetch("https://swapi.dev/api/people/")
+                                .then(res => res.json())
+                                .then(element2 => {
+                                    let actors = [];
+                                    for (let i = 0; i < element2.results.length; i++) {
+                                        actors.push(element2.results[i].name)
+                                    };
+                                })
 
 // Gráfica 2
 var data = {

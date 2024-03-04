@@ -22,12 +22,16 @@ Pasos a seguir:
     - [X] Creo un par de <div>, uno para cada parte del ejercicio
     - [X] Entro en la api de Star Wars para localizar la información que precisa cada tarea
     - [X] Me meto en Chartist y busco una gráfica de líneas que me mole
-    - [X] Conseguir el nombre de las pelis:
+    - [X] Conseguir el nombre de las pelis
     <!-- let films = []
                                     for (let i = 0; i < element.results.length; i++) {
                                         films.push(element.results[i].title) 
                                     }
                                     return films -->
-    - [] Conseguir solo el año de publicación de las pelis --> string.slice(0, 4)
-    - [] Hago fetch de las rutas que toquen de la api
-    - [] Copio la gráfica desde su cdn, el código en mi scrip.js y lo anexo al <div> que le toque
+    - [X] Conseguir solo el año de publicación de las pelis
+    <!-- yearsArray.push((element.results[i].release_date).slice(0, 4)) -->
+    - [X] Hago fetch de las rutas que toquen de la api
+    - [X] Copio la gráfica desde su cdn, el código en mi scrip.js y lo anexo al <div> que le toque
+    - [X] Acabada tarea 1
+    - [] No aparecen todos los personajes en https://swapi.dev/api/people/, vienen luego en páginas como https://swapi.dev/api/people/?page=2 y así hasta la 9. Debería hacer un fetch de todas y guardar todos los personajes en un mismo array para el eje "X"
+    - [] Hay personajes que no aparecen en ninguna peli, habría que meter un if(element2.results[i].films = Null/U)
